@@ -9,65 +9,104 @@
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
         font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-        background:#f5f7fa;color:#333;line-height:1.6;padding:20px;
+        background:#1e1e24; /* 已修改：深色背景 */
+        color:#e0e0e0; /* 已修改：淺色文字 */
+        line-height:1.6;padding:20px;
     }
-    .container{max-width:800px;margin:0 auto;}
+    /* 放大整體頁面最大寬度，確保 3 個卡片橫排時有足夠空間 */
+    .container{max-width:1000px;margin:0 auto;}
 
     /* ---------- Header ---------- */
     header{
-        text-align:center;padding:40px 0;
+        padding:40px 0;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 30px;
     }
     
     .headshot-container{
-        position:relative;width:200px;height:200px;margin:0 auto;
-        border-radius:50%;background:#ddd;display:flex;
+        position:relative;
+        width:150px;
+        height:auto;
+        min-height:120px;
+        flex-shrink: 0;
+        border-radius:10px;
+        background:#2a2b36;display:flex;
         align-items:center;justify-content:center;overflow:hidden;
-        box-shadow:0 4px 12px rgba(0,0,0,.1);cursor:pointer;
+        box-shadow:0 4px 12px rgba(0,0,0,.4);cursor:pointer;
     }
     .headshot-placeholder{
-        width:100%;height:100%;background:#3498db;border-radius:50%;
+        width:100%;height:100%;background:#2980b9;
+        border-radius:10px;
         display:flex;align-items:center;justify-content:center;
     }
-    .headshot-placeholder-text{font-size:2rem;font-weight:bold;color:#fff;
-        text-shadow:1px 1px 2px rgba(0,0,0,.3);}
+    .headshot-placeholder-text{
+        font-size:1.2rem;
+        font-weight:bold;
+        color:#fff;
+        text-shadow:1px 1px 2px rgba(0,0,0,.3);
+        text-align: center;
+        padding: 10px;
+    }
     #headshotImg{
         width:100%;height:100%;object-fit:cover;display:none;
     }
-    .headshot-btn{
-        margin-top:20px;color:#7f8c8d;cursor:pointer;font-size:.9rem;
-    }
-    .headshot-btn:hover{color:#3498db;}
 
-    /* 自我介紹輸入框樣式 (已調整為在頭貼下方) */
+    /* 自我介紹輸入框樣式 */
     .intro-input {
+        flex: 1;
         font-size: 1.2rem;
-        color: #34495e;
-        margin-top: 30px;
-        text-align: center;
-        border: 2px dashed #cbd5e1;
-        background: #ffffff;
-        padding: 10px 15px;
+        color: #e0e0e0; /* 已修改：輸入文字淺色 */
+        text-align: left;
+        border: 2px dashed #4a5568; /* 已修改：虛線邊框暗色 */
+        background: #2a2b36; /* 已修改：背景改深色 */
+        padding: 15px;
+        min-height: 120px;
+        resize: vertical;
+    }
+    .intro-input::placeholder {
+        color: #a0aec0;
     }
     .intro-input:focus {
         border-style: solid;
         border-color: #3498db;
     }
 
+    @media(max-width:768px){
+        header {
+            flex-direction: column;
+            text-align: center;
+        }
+        .headshot-container {
+            width: 100%;
+            height: 150px;
+        }
+        .intro-input {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
     /* ---------- Projects ---------- */
     .projects-container{
-        max-width:1200px;margin:60px auto;padding:0 20px;
+        max-width:1000px;margin:60px auto;padding:0;
     }
     .section-title{
-        text-align:center;font-size:2.5rem;margin-bottom:50px;color:#2c3e50;
+        text-align:center;font-size:2.5rem;margin-bottom:50px;
+        color:#f0f4f8; /* 已修改：亮色標題 */
     }
     .projects-grid{
         display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-        gap:30px;max-width:1000px;margin:0 auto;
+        grid-template-columns: repeat(3, 1fr);
+        gap:20px;
+        width:100%;
+        margin:0 auto;
     }
     .project-card{
-        background:#fff;padding:25px;border-radius:10px;
-        box-shadow:0 4px 15px rgba(0,0,0,.1);
+        background:#2a2b36; /* 已修改：卡片背景深色 */
+        padding:25px;border-radius:10px;
+        box-shadow:0 4px 15px rgba(0,0,0,.3);
         transition:transform .3s,box-shadow .3s;
         display: flex;
         flex-direction: column;
@@ -75,25 +114,26 @@
     }
     .project-card:hover{
         transform:translateY(-5px);
-        box-shadow:0 8px 25px rgba(0,0,0,.15);
+        box-shadow:0 8px 25px rgba(0,0,0,.5);
     }
     
     /* 專案卡片內的填空框樣式 */
     .project-title-input {
         font-size: 1.25rem !important;
         font-weight: bold;
-        color: #3498db !important;
+        color: #63b3ed !important; /* 已修改：亮藍色標題 */
     }
     .project-desc-input {
         resize: vertical;
         min-height: 100px;
-        color: #555;
+        color: #cbd5e0;
     }
     .project-link-input {
         font-size: 0.9rem !important;
-        color: #7f8c8d;
+        color: #a0aec0;
     }
 
+    /* 手機等窄螢幕時自動改為單欄，避免被壓得太窄 */
     @media(max-width:768px){
         .projects-grid{grid-template-columns:1fr;}
         .section-title{font-size:2rem;}
@@ -101,21 +141,33 @@
 
     /* ---------- Contact ---------- */
     .contact-section{
-        max-width:800px;margin:0 auto;padding:20px;
+        max-width:1000px;
+        margin:60px auto 0 auto;
+        padding:0;
     }
     .contact-title{
-        text-align:center;font-size:1.8rem;margin-bottom:30px;color:#2c3e50;
+        text-align:center;font-size:1.8rem;margin-bottom:30px;
+        color:#f0f4f8; /* 已修改：亮色標題 */
     }
     .contact-grid{
         display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
-        padding:30px;background:#fff;border-radius:10px;
-        box-shadow:0 4px 12px rgba(0,0,0,.08);
+        padding:30px;
+        background:#2a2b36; /* 已修改：表單背景深色 */
+        border-radius:10px;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
     }
     @media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
 
     input,textarea{
-        width:100%;padding:12px 15px;border:2px solid #ddd;border-radius:10px;
+        width:100%;padding:12px 15px;
+        border:2px solid #3f4452; /* 已修改：輸入框暗邊框 */
+        background:#1e1e24; /* 已修改：輸入框暗底色 */
+        color:#e0e0e0; /* 已修改：輸入文字淺色 */
+        border-radius:10px;
         font-family:inherit;font-size:1rem;transition:all .3s;
+    }
+    input::placeholder, textarea::placeholder{
+        color: #718096; /* 已修改：提示字顏色 */
     }
     input:focus,textarea:focus{border-color:#3498db;outline:none;}
 
@@ -142,7 +194,7 @@
             </div>
         </div>
 
-        <input type="text" class="intro-input" placeholder="請輸入自我介紹">
+        <textarea class="intro-input" placeholder="請輸入自我介紹"></textarea>
     </header>
 
     <section class="projects-container">
