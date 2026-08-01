@@ -18,15 +18,16 @@
     header{
         padding:40px 0;
         display: flex;
-        align-items: center;
+        align-items: stretch; /* 已修改：自動將頭貼與自我介紹框垂直拉伸至同高 */
         justify-content: center;
         gap: 30px;
     }
     
     .headshot-container{
         position:relative;
-        width:180px;
-        height:180px;
+        width:150px; /* 已修改：固定寬度 */
+        height:auto; /* 已修改：高度自動跟隨自我介紹框 */
+        min-height:120px;
         flex-shrink: 0; /* 防止縮小 */
         border-radius:10px;
         background:#ddd;display:flex;
@@ -39,7 +40,7 @@
         display:flex;align-items:center;justify-content:center;
     }
     .headshot-placeholder-text{
-        font-size:1.5rem;
+        font-size:1.2rem;
         font-weight:bold;
         color:#fff;
         text-shadow:1px 1px 2px rgba(0,0,0,.3);
@@ -71,6 +72,10 @@
         header {
             flex-direction: column;
             text-align: center;
+        }
+        .headshot-container {
+            width: 100%;
+            height: 150px;
         }
         .intro-input {
             width: 100%;
@@ -130,9 +135,9 @@
 
     /* ---------- Contact ---------- */
     .contact-section{
-        max-width:1000px; /* 已修改：調整為與作品集區域相同寬度 */
+        max-width:1000px;
         margin:60px auto 0 auto;
-        padding:0; /* 已修改：移除 padding 以精準對齊 */
+        padding:0;
     }
     .contact-title{
         text-align:center;font-size:1.8rem;margin-bottom:30px;color:#2c3e50;
