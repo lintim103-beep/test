@@ -10,8 +10,10 @@
     body{
         font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
         background:#f5f7fa;color:#333;line-height:1.6;padding:20px;
+        /* 新增：讓背景與文字顏色切換時有平滑過渡動畫 */
         transition: background-color 0.4s ease, color 0.4s ease;
     }
+    /* 放大整體頁面最大寬度，確保 3 個卡片橫排時有足夠空間 */
     .container{max-width:1000px;margin:0 auto;}
 
     /* ---------- 切換深淺色按鈕 ---------- */
@@ -22,9 +24,9 @@
         background: #ffffff;
         color: #2c3e50;
         border: 2px solid #cbd5e1;
-        padding: 8px 16px;
+        padding: 10px 18px;
         border-radius: 30px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0,0,0,.1);
@@ -32,7 +34,7 @@
         z-index: 1000;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
     }
     .theme-toggle-btn:hover {
         transform: translateY(-2px);
@@ -81,7 +83,7 @@
     /* 自我介紹輸入框樣式 */
     .intro-input {
         flex: 1;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         color: #34495e;
         text-align: left;
         border: 2px dashed #cbd5e1;
@@ -96,10 +98,33 @@
         border-color: #3498db;
     }
 
+    @media(max-width:768px){
+        header {
+            flex-direction: column;
+            text-align: center;
+        }
+        .headshot-container {
+            width: 100%;
+            height: 150px;
+        }
+        .intro-input {
+            width: 100%;
+            text-align: center;
+        }
+        /* 手機版微調按鈕位置 */
+        .theme-toggle-btn {
+            top: 10px;
+            right: 10px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+    }
+
     /* ---------- Projects ---------- */
     .projects-container{
         max-width:1000px;margin:60px auto;padding:0;
     }
+    /* 已修改：標題字體大小統一為 2.2rem */
     .section-title{
         text-align:center;font-size:2.2rem;margin-bottom:40px;color:#2c3e50;
         transition: color 0.4s ease;
@@ -124,6 +149,7 @@
         box-shadow:0 8px 25px rgba(0,0,0,.15);
     }
     
+    /* 專案卡片內的填空框樣式 */
     .project-title-input {
         font-size: 1.25rem !important;
         font-weight: bold;
@@ -145,6 +171,7 @@
         margin:60px auto 0 auto;
         padding:0;
     }
+    /* 已修改：標題字體大小統一為 2.2rem */
     .contact-title{
         text-align:center;font-size:2.2rem;margin-bottom:30px;color:#2c3e50;
         transition: color 0.4s ease;
@@ -154,6 +181,13 @@
         padding:30px;background:#fff;border-radius:10px;
         box-shadow:0 4px 12px rgba(0,0,0,.08);
         transition: background-color 0.4s ease;
+    }
+
+    /* 手機等窄螢幕時自動調整尺寸 */
+    @media(max-width:768px){
+        .projects-grid{grid-template-columns:1fr;}
+        .contact-grid{grid-template-columns:1fr;}
+        .section-title, .contact-title{font-size:1.8rem;}
     }
 
     input,textarea{
@@ -174,114 +208,53 @@
     }
 
     /* ==========================================
-       📱 手機版專屬優化 (Mobile RWD)
-       ========================================== */
-    @media(max-width:768px){
-        body {
-            padding: 15px 12px;
-        }
-        .theme-toggle-btn {
-            top: 12px;
-            right: 12px;
-            padding: 6px 12px;
-            font-size: 0.8rem;
-        }
-        header {
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .headshot-container {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%; /* 手機版改圓形大頭貼更美觀 */
-        }
-        .intro-input {
-            width: 100%;
-            text-align: left;
-            min-height: 100px;
-            font-size: 1rem;
-        }
-        .projects-container, .contact-section {
-            margin: 40px auto 0 auto;
-        }
-        .section-title, .contact-title {
-            font-size: 1.6rem;
-            margin-bottom: 24px;
-        }
-        .projects-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        .project-card {
-            padding: 18px;
-        }
-        .contact-grid {
-            grid-template-columns: 1fr;
-            padding: 20px 15px;
-            gap: 12px;
-        }
-        .submit-btn {
-            width: 100%; /* 手機版按鈕滿版更好按 */
-            padding: 12px 0;
-        }
-    }
-
-    /* ==========================================
-       ---------- 深色模式樣式 (Dark Mode) ----------
+       ---------- 深色模式 (Dark Mode) 樣式 ----------
        ========================================== */
     body.dark-mode {
-        background: #18181c;
+        background: #1a1b26;
         color: #e0e0e0;
     }
     body.dark-mode .theme-toggle-btn {
-        background: #2a2b36;
-        color: #f0f4f8;
-        border-color: #4a5568;
-        box-shadow: 0 4px 12px rgba(0,0,0,.4);
+        background: #24283b;
+        color: #c0caf5;
+        border-color: #414868;
     }
     body.dark-mode .section-title,
     body.dark-mode .contact-title {
-        color: #f0f4f8;
+        color: #c0caf5;
     }
     body.dark-mode .project-card,
     body.dark-mode .contact-grid {
-        background: #24252d;
-        box-shadow: 0 4px 15px rgba(0,0,0,.4);
+        background: #24283b;
+        box-shadow: 0 4px 15px rgba(0,0,0,.3);
     }
     body.dark-mode .intro-input {
-        background: #24252d;
+        background: #24283b;
         color: #e0e0e0;
-        border-color: #4a5568;
-    }
-    body.dark-mode .intro-input::placeholder {
-        color: #a0aec0;
+        border-color: #414868;
     }
     body.dark-mode input,
     body.dark-mode textarea {
-        background: #18181c;
+        background: #1a1b26;
         color: #e0e0e0;
-        border-color: #3f4452;
+        border-color: #414868;
     }
     body.dark-mode input::placeholder,
-    body.dark-mode textarea::placeholder {
-        color: #718096;
+    body.dark-mode textarea::placeholder,
+    body.dark-mode .intro-input::placeholder {
+        color: #7982a9;
     }
     body.dark-mode .project-title-input {
-        color: #63b3ed !important;
+        color: #7aa2f7 !important;
     }
     body.dark-mode .project-desc-input {
-        color: #cbd5e0;
-    }
-    body.dark-mode .project-link-input {
-        color: #a0aec0;
+        color: #a9b1d6;
     }
 </style>
 </head>
 <body>
 
-<!-- 深淺色切換按鈕 -->
+<!-- 新增：深淺色切換按鈕 -->
 <button class="theme-toggle-btn" id="themeToggleBtn">
     <span>🌙</span> 深色模式
 </button>
@@ -292,7 +265,7 @@
             <input type="file" id="headshotInput" accept="image/*" style="display:none;">
             <div class="headshot-placeholder">
                 <img id="headshotImg" src="" alt="Headshot">
-                <div id="placeholderText" class="headshot-placeholder-text">Upload Photo</div>
+                <div id="placeholderText" class="headshot-placeholder-text">Upload Your Photo</div>
             </div>
         </div>
 
@@ -338,12 +311,14 @@
 </div>
 
 <script>
-    // 深淺色模式切換邏輯
+    // 新增：深淺色模式切換邏輯
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     
     themeToggleBtn.addEventListener('click', () => {
+        // 切換 body 的 dark-mode class
         document.body.classList.toggle('dark-mode');
         
+        // 根據目前的模式切換按鈕內的文字與圖示
         if (document.body.classList.contains('dark-mode')) {
             themeToggleBtn.innerHTML = '<span>☀️</span> 淺色模式';
         } else {
@@ -357,10 +332,12 @@
     const placeholderText = document.getElementById('placeholderText');
     const headshotContainer = document.querySelector('.headshot-container');
 
+    // Click container to trigger file input
     headshotContainer.addEventListener('click', () => {
         headshotInput.click();
     });
 
+    // When file selected, preview
     headshotInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
@@ -376,11 +353,17 @@
 
     // 表單提交處理
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // 防止表單重整
+
+        // 顯示成功提示
         alert('留言已成功送出！');
+
+        // 清空表單欄位
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
         document.getElementById('message').value = '';
+
+        // 聚焦到姓名欄位（視覺上清空後的回饋）
         document.getElementById('name').focus();
     });
 </script>
