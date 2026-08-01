@@ -87,7 +87,7 @@
     }
     .projects-grid{
         display:grid;
-        /* 固定分成 3 等份，確保三個框框一定在同一橫排 */
+        /* 改為固定分成 3 等份，確保三個框框一定在同一橫排 */
         grid-template-columns: repeat(3, 1fr);
         gap:20px;
         width:100%;
@@ -122,7 +122,7 @@
         color: #7f8c8d;
     }
 
-    /* 手機等窄螢幕時自動改為單欄 */
+    /* 手機等窄螢幕時自動改為單欄，避免被壓得太窄 */
     @media(max-width:768px){
         .projects-grid{grid-template-columns:1fr;}
         .section-title{font-size:2rem;}
@@ -130,9 +130,9 @@
 
     /* ---------- Contact ---------- */
     .contact-section{
-        max-width:1000px; /* 已調整：與作品集區域總寬度相同 */
+        max-width:1000px; /* 已修改：調整為與作品集區域相同寬度 */
         margin:60px auto 0 auto;
-        padding:0;
+        padding:0; /* 已修改：移除 padding 以精準對齊 */
     }
     .contact-title{
         text-align:center;font-size:1.8rem;margin-bottom:30px;color:#2c3e50;
