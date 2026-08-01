@@ -11,7 +11,7 @@
         font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
         background:#f5f7fa;color:#333;line-height:1.6;padding:20px;
     }
-    .container{max-width:800px;margin:0 auto;}
+    .container{max-width:1000px;margin:0 auto;} /* 稍微放大容器寬度以利三欄排版 */
 
     /* ---------- Header ---------- */
     header{
@@ -27,7 +27,6 @@
         width:180px;
         height:180px;
         flex-shrink: 0; /* 防止縮小 */
-        /* --- 已修改：從 50% 改為圓角矩形 10px --- */
         border-radius:10px;
         background:#ddd;display:flex;
         align-items:center;justify-content:center;overflow:hidden;
@@ -35,7 +34,6 @@
     }
     .headshot-placeholder{
         width:100%;height:100%;background:#3498db;
-        /* --- 已修改：從 50% 改為圓角矩形 10px --- */
         border-radius:10px;
         display:flex;align-items:center;justify-content:center;
     }
@@ -51,9 +49,9 @@
         width:100%;height:100%;object-fit:cover;display:none;
     }
 
-    /* 自我介紹輸入框樣式 (已調整為在頭貼右邊) */
+    /* 自我介紹輸入框樣式 */
     .intro-input {
-        flex: 1; /* 彈性填滿剩餘空間 */
+        flex: 1;
         font-size: 1.2rem;
         color: #34495e;
         text-align: left;
@@ -70,7 +68,7 @@
 
     @media(max-width:768px){
         header {
-            flex-direction: column; /* 小螢幕切換為上下堆疊 */
+            flex-direction: column;
             text-align: center;
         }
         .intro-input {
@@ -81,15 +79,18 @@
 
     /* ---------- Projects ---------- */
     .projects-container{
-        max-width:1200px;margin:60px auto;padding:0 20px;
+        max-width:1000px;margin:60px auto;padding:0;
     }
     .section-title{
         text-align:center;font-size:2.5rem;margin-bottom:50px;color:#2c3e50;
     }
     .projects-grid{
         display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-        gap:30px;max-width:1000px;margin:0 auto;
+        /* --- 已修改：固定為 3 等份平行排列 --- */
+        grid-template-columns: repeat(3, 1fr);
+        gap:20px;
+        width:100%;
+        margin:0 auto;
     }
     .project-card{
         background:#fff;padding:25px;border-radius:10px;
@@ -120,6 +121,7 @@
         color: #7f8c8d;
     }
 
+    /* 手機等窄螢幕時自動轉為單欄，避免卡片擠壓變形 */
     @media(max-width:768px){
         .projects-grid{grid-template-columns:1fr;}
         .section-title{font-size:2rem;}
