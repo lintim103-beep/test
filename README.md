@@ -39,7 +39,7 @@
     }
     .headshot-btn:hover{color:#3498db;}
 
-    /* ---------- Projects ---------- */
+    /* ---------- Projects (已修改為填空輸入框) ---------- */
     .projects-container{
         max-width:1200px;margin:60px auto;padding:0 20px;
     }
@@ -52,16 +52,34 @@
         gap:30px;max-width:1000px;margin:0 auto;
     }
     .project-card{
-        background:#fff;padding:30px;border-radius:10px;
+        background:#fff;padding:25px;border-radius:10px;
         box-shadow:0 4px 15px rgba(0,0,0,.1);
         transition:transform .3s,box-shadow .3s;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
     .project-card:hover{
         transform:translateY(-5px);
         box-shadow:0 8px 25px rgba(0,0,0,.15);
     }
-    .project-title{color:#3498db;font-size:1.5rem;margin-bottom:15px;}
-    .project-desc{color:#666;line-height:1.6;font-size:1rem;}
+    
+    /* 專案卡片內的填空框樣式 */
+    .project-title-input {
+        font-size: 1.25rem !important;
+        font-weight: bold;
+        color: #3498db !important;
+    }
+    .project-desc-input {
+        resize: vertical;
+        min-height: 100px;
+        color: #555;
+    }
+    .project-link-input {
+        font-size: 0.9rem !important;
+        color: #7f8c8d;
+    }
+
     @media(max-width:768px){
         .projects-grid{grid-template-columns:1fr;}
         .section-title{font-size:2rem;}
@@ -82,7 +100,7 @@
     @media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
 
     input,textarea{
-        width:100%;padding:15px;border:2px solid #ddd;border-radius:10px;
+        width:100%;padding:12px 15px;border:2px solid #ddd;border-radius:10px;
         font-family:inherit;font-size:1rem;transition:all .3s;
     }
     input:focus,textarea:focus{border-color:#3498db;outline:none;}
@@ -114,22 +132,32 @@
         </div>
     </header>
 
-    <!-- Projects Section -->
+    <!-- Projects Section (改為可填空模式) -->
     <section class="projects-container">
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
+            
+            <!-- 卡片 1 -->
             <div class="project-card">
-                <h3 class="project-title">E-Commerce Website</h3>
-                <p class="project-desc">A full-featured online shopping platform with product catalog, cart functionality, and secure payment processing. Built using modern web technologies for optimal performance.</p>
+                <input type="text" class="project-title-input" placeholder="請輸入專案名稱" value="E-Commerce Website">
+                <textarea class="project-desc-input" placeholder="請輸入專案描述">A full-featured online shopping platform with product catalog, cart functionality, and secure payment processing. Built using modern web technologies for optimal performance.</textarea>
+                <input type="url" class="project-link-input" placeholder="專案連結 (例：https://...)">
             </div>
+
+            <!-- 卡片 2 -->
             <div class="project-card">
-                <h3 class="project-title">Task Management App</h3>
-                <p class="project-desc">Intuitive project and task management tool with drag-and-drop functionality, real-time collaboration features, and comprehensive reporting capabilities.</p>
+                <input type="text" class="project-title-input" placeholder="請輸入專案名稱" value="Task Management App">
+                <textarea class="project-desc-input" placeholder="請輸入專案描述">Intuitive project and task management tool with drag-and-drop functionality, real-time collaboration features, and comprehensive reporting capabilities.</textarea>
+                <input type="url" class="project-link-input" placeholder="專案連結 (例：https://...)">
             </div>
+
+            <!-- 卡片 3 -->
             <div class="project-card">
-                <h3 class="project-title">Weather Dashboard</h3>
-                <p class="project-desc">Real-time weather visualization application with interactive charts, location-based forecasts, and current conditions from multiple weather sources.</p>
+                <input type="text" class="project-title-input" placeholder="請輸入專案名稱" value="Weather Dashboard">
+                <textarea class="project-desc-input" placeholder="請輸入專案描述">Real-time weather visualization application with interactive charts, location-based forecasts, and current conditions from multiple weather sources.</textarea>
+                <input type="url" class="project-link-input" placeholder="專案連結 (例：https://...)">
             </div>
+
         </div>
     </section>
 
