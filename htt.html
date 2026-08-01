@@ -22,9 +22,9 @@
         background: #ffffff;
         color: #2c3e50;
         border: 2px solid #cbd5e1;
-        padding: 10px 18px;
+        padding: 8px 16px;
         border-radius: 30px;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0,0,0,.1);
@@ -32,7 +32,7 @@
         z-index: 1000;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
     }
     .theme-toggle-btn:hover {
         transform: translateY(-2px);
@@ -81,7 +81,7 @@
     /* 自我介紹輸入框樣式 */
     .intro-input {
         flex: 1;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: #34495e;
         text-align: left;
         border: 2px dashed #cbd5e1;
@@ -94,21 +94,6 @@
     .intro-input:focus {
         border-style: solid;
         border-color: #3498db;
-    }
-
-    @media(max-width:768px){
-        header {
-            flex-direction: column;
-            text-align: center;
-        }
-        .headshot-container {
-            width: 100%;
-            height: 150px;
-        }
-        .intro-input {
-            width: 100%;
-            text-align: center;
-        }
     }
 
     /* ---------- Projects ---------- */
@@ -171,12 +156,6 @@
         transition: background-color 0.4s ease;
     }
 
-    @media(max-width:768px){
-        .projects-grid{grid-template-columns:1fr;}
-        .contact-grid{grid-template-columns:1fr;}
-        .section-title, .contact-title{font-size:1.8rem;}
-    }
-
     input,textarea{
         width:100%;padding:12px 15px;border:2px solid #ddd;border-radius:10px;
         font-family:inherit;font-size:1rem;transition:all .3s;
@@ -192,6 +171,61 @@
     }
     .submit-btn:hover{
         background:#2980b9;transform:translateY(-2px);
+    }
+
+    /* ==========================================
+       📱 手機版專屬優化 (Mobile RWD)
+       ========================================== */
+    @media(max-width:768px){
+        body {
+            padding: 15px 12px;
+        }
+        .theme-toggle-btn {
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+        header {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .headshot-container {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%; /* 手機版改圓形大頭貼更美觀 */
+        }
+        .intro-input {
+            width: 100%;
+            text-align: left;
+            min-height: 100px;
+            font-size: 1rem;
+        }
+        .projects-container, .contact-section {
+            margin: 40px auto 0 auto;
+        }
+        .section-title, .contact-title {
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+        }
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .project-card {
+            padding: 18px;
+        }
+        .contact-grid {
+            grid-template-columns: 1fr;
+            padding: 20px 15px;
+            gap: 12px;
+        }
+        .submit-btn {
+            width: 100%; /* 手機版按鈕滿版更好按 */
+            padding: 12px 0;
+        }
     }
 
     /* ==========================================
@@ -258,7 +292,7 @@
             <input type="file" id="headshotInput" accept="image/*" style="display:none;">
             <div class="headshot-placeholder">
                 <img id="headshotImg" src="" alt="Headshot">
-                <div id="placeholderText" class="headshot-placeholder-text">Upload Your Photo</div>
+                <div id="placeholderText" class="headshot-placeholder-text">Upload Photo</div>
             </div>
         </div>
 
